@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/index');
+Route::group(['namespace'=>'frontend'],function () {
+    Route::get('/','HomeController@index')->name('home');
+    Route::resource('about-us', 'aboutUsController');
+    Route::resource('marketing-tool','MarketingToolController');
+    Route::resource('faq','FaqController');
+    Route::resource('blogs', 'BlogController');
+    Route::resource('contact', 'ContactController');
 });
+
 
 Auth::routes();
 
